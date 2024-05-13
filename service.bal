@@ -1,7 +1,7 @@
 import ballerina/http;
 import ballerina/persist;
-import ecommerce.cache;
-import ecommerce.store;
+import product_catalog.cache;
+import product_catalog.store;
 
 service /shop on new http:Listener(9090) {
 
@@ -88,6 +88,7 @@ service /shop on new http:Listener(9090) {
 
     // Delete a product
     resource function delete products/[int id]() returns http:NoContent & readonly|persist:Error {
+        cache:Product|persist:Error cachedResult = self.cache->/products/[id].delete;
         store:Product|persist:Error result = self.store->/products/[id].delete;
         if result is store:Product {
             return http:NO_CONTENT;
