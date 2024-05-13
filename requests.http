@@ -1,0 +1,87 @@
+###
+# Create a new seller
+POST http://localhost:9090/shop/sellers
+Content-Type: application/json
+
+{
+  "id": 1,
+  "name": "MegaMart",
+  "email": "sales@megamart.com",
+  "contactNumber": "+1 (213) 555-1234",
+  "address": "456 Market Avenue, Los Angeles",
+  "logoUrl": "http://example.com/megamart.png"
+}
+
+###
+# Get seller info
+GET http://localhost:9090/shop/sellers/1
+
+###
+# Update seller info
+PUT http://localhost:9090/shop/sellers/1
+Content-Type: application/json
+
+{
+  "contactNumber": "+1 (310) 555-5678"
+}
+
+###
+# Create a new product
+POST http://localhost:9090/shop/products
+Content-Type: application/json
+
+{
+  "id": 1,
+  "name": "Wireless Bluetooth Earbuds",
+  "description": "High-quality wireless earbuds with Bluetooth connectivity for seamless audio experience.",
+  "price": 79.99,
+  "availability": "IN_STOCK",
+  "quantity": 500,
+  "rating": 0,
+  "totalSale": 0,
+  "sellerId": 1,
+  "categoryId": 1,
+  "releaseDate": {"year": 2024, "month": 5, "day": 11},
+  "lastUpdated": {"year": 2024, "month": 5, "day": 11, "hour": 12, "minute": 24}
+}
+
+###
+# Get product info
+GET http://localhost:9090/shop/products/1
+
+###
+# Update product info
+PUT http://localhost:9090/shop/products/1
+Content-Type: application/json
+
+{
+  "price": 109.99,
+  "lastUpdated": {"year": 2025, "month": 12, "day": 14, "hour": 15, "minute": 3}
+}
+
+###
+# Delete product
+DELETE http://localhost:9090/shop/products/1
+
+###
+# Get all products
+GET http://localhost:9090/shop/products
+
+###
+# Create a new category
+POST http://localhost:9090/shop/categories
+Content-Type: application/json
+
+{
+  "id": 1,
+  "name": "Accessory",
+  "description": "Accessorize your life with our wide range of stylish and functional accessories."
+}
+
+###
+# Get all products of a category
+GET http://localhost:9090/shop/categories/Accessory/products
+
+###
+# Get all products of a seller
+GET http://localhost:9090/shop/sellers/1/products
